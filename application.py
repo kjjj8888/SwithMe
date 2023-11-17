@@ -5,11 +5,11 @@ application = Flask(__name__)
 
 @application.route("/")
 def hello():
-    return render_template("hello.html")
+    return render_template("result.html")
 
 @application.route("/result/")
 def result():
-     return render_template("result.html")
+     return render_template("hello.html")
 
 
 if __name__ == "__main__":
