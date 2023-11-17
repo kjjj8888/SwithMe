@@ -1,15 +1,19 @@
 from flask import Flask, render_template
 import sys
+import models
+import pymysql
 application = Flask(__name__)
 
 
 @application.route("/")
-def hello():
-    return render_template("hello.html")
+def index():
+    a = models.test()
+    return render_template("result.html", a=a)
+
 
 @application.route("/result/")
 def result():
-     return render_template("result.html")
+     return render_template("hello.html")
 
 
 if __name__ == "__main__":
