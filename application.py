@@ -4,8 +4,8 @@ application = Flask(__name__)
 
 
 @application.route("/")
-def hello():
-    return render_template("hello.html")
+def main():
+    return render_template("main.html")
 
 @application.route("/result/")
 def result():
