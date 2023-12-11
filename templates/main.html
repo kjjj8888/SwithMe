@@ -25,48 +25,11 @@
     <link href="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 </head>
 
-<body id="page-top">
+<body id="page-top" style="font-size: 20px color:#000000;">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/result">
-        
-                <div class="sidebar-brand-text mx-3">Job list</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/result">
-                    <span>직군명1</span></a>
-            </li>
-
-        
-            <li class="nav-item">
-                <a class="nav-link" href="/result">
-                    <span>직군명2</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/result">
-                    <span>직군명3</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/result">
-                    <span>직군명4</span></a>
-            </li>
-
-            <hr class="sidebar-divider d-none d-md-block">
-
-        </ul>
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -80,12 +43,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav mr-auto font-weight-bold">
 
-                        <li style="color: black">KAI 채용공고 분석</li>
-                        
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-
-                        <li><a  href="/">Home</a></li>
+                        <li style="font-size: 40px; color: black">채용공고 요약 및 분석 사이트</li>
                         
                     </ul>
 
@@ -111,33 +69,18 @@
                                             <th>조회</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>기업명</th>
-                                            <th>직군</th>
-                                            <th>세부분야</th>
-                                            <th>조회</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
+                                        {% for i in data %}
                                         <tr>
-                                            <td>KAI</td>
-                                            <td>??</td>
-                                            <td>??</td>
-                                            <td>??</td>
+                                            <td>{{ i[1] }}</td>
+                                            <td>{{ i[2] }}</td>
+                                            <td>{{ i[3] }}</td>
+                                            <td>
+                                                <a  href="/result/{{i[0]}}">Home</a>
+                                                </form>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>KAI</td>
-                                            <td>??</td>
-                                            <td>??</td>
-                                            <td>??</td>
-                                        </tr>
-                                        <tr>
-                                            <td>KAI</td>
-                                            <td>??</td>
-                                            <td>??</td>
-                                            <td>??</td>
-                                        </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -187,6 +130,12 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ url_for('static', filename='js/demo/datatables-demo.js') }}"></script>
+
+    <script>
+        function post_go(idx) {
+            let a =idx
+        location.href="/result/"+a
+        }
 
 </body>
 
